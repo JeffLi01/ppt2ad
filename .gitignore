@@ -1,0 +1,7 @@
+/images
+/Contents
+16*
+/__MACOSX/
+__pycache__
+*.egg-info
+.DS_Store
