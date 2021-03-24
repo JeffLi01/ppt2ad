@@ -9,6 +9,7 @@ Author: Jeff Li <lijinfeng01@inspur.com>
 Date: 2021/03/21 13:24:08
 '''
 
+import datetime
 import hashlib
 import math
 import os
@@ -125,7 +126,12 @@ class TaskList:
             images.append(image)
         return images
 
-    def add_schedule(self, program, starttime, stoptime, week_days):
+    def add_schedule(self, program, starttime, week_days, stoptime=None, minutes=None):
+        if stoptime is None:
+            start = datetime.datetime.strptime(starttime, "%H:%M:%S")
+            delta = datetime.timedelta(seconds=(minutes * 60 - 1))
+            stop = start + delta
+            stoptime = stop.strftime("%H:%M:%S")
         self.multi_task.add_program(program, starttime, stoptime, week_days)
 
     def to_et(self):
