@@ -132,6 +132,11 @@ class TaskList:
             delta = datetime.timedelta(seconds=(minutes * 60 - 1))
             stop = start + delta
             stoptime = stop.strftime("%H:%M:%S")
+        else:
+            stop = datetime.datetime.strptime(stoptime, "%H:%M:%S")
+            delta = datetime.timedelta(seconds=1)
+            stop = stop - delta
+            stoptime = stop.strftime("%H:%M:%S")
         self.multi_task.add_program(program, starttime, stoptime, week_days)
 
     def to_et(self):
