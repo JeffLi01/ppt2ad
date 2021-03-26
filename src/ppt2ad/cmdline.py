@@ -43,12 +43,22 @@ def main():
     parser = argparse.ArgumentParser(prog="ppt2ad")
     version = pkgutil.get_data(__package__, "VERSION.txt").decode(encoding="utf-8")
     parser.add_argument ("-v", "--version", action="version", version=version)
+    parser.add_argument ("-n", "--name", help="班牌名称")
+    parser.add_argument ("--start", help="起始日期")
+    parser.add_argument ("--stop", help="结束日期")
 
     args = parser.parse_args()
 
     startdate = time.strptime("2021-03-15", "%Y-%m-%d")
     stopdate = time.strptime("2021-04-15", "%Y-%m-%d")
     taskname = time.strftime("%Y%m%d%H%M%S")
+    if args.name:
+        taskname = args.name
+    if args.start:
+        startdate = time.strptime(args.start, "%Y-%m-%d")
+    if args.stop:
+        stopdate = time.strptime(args.stop, "%Y-%m-%d")
+
     tasklist = core.TaskList(taskname, startdate=startdate, stopdate=stopdate)
     tasklist.load_filelist(os.path.join("Contents", "filelist.xml"))
 
