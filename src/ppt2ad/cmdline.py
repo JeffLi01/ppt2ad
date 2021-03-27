@@ -69,11 +69,15 @@ def main():
         category, week_days, instance, starttime, stoptime, minutes = schedule
         if category in ["早读", "课间", "课间操", "午休", "放学"]:
             program_name = category
-            program = programs.setdefault(program_name, tasklist.create_program(program_name, image_paths=get_image_paths(program_name)))
+            if program_name not in programs:
+                programs[program_name] = tasklist.create_program(program_name, image_paths=get_image_paths(program_name))
+            program = programs[program_name]
         elif category == "课程":
             program_name = "周{}第{}节".format("一二三四五"[week_days[0]], "零一二三四五六七八"[instance])
-            image_category = "{}-{}".format(week_days[0] + 1, instance)
-            program = programs.setdefault(program_name, tasklist.create_program(program_name, image_paths=get_image_paths(image_category)))
+            if program_name not in programs:
+                image_category = "{}-{}".format(week_days[0] + 1, instance)
+                programs[program_name] = tasklist.create_program(program_name, image_paths=get_image_paths(image_category))
+            program = programs[program_name]
         tasklist.add_schedule(program, starttime=starttime, stoptime=stoptime, week_days=week_days, minutes=minutes)
 
     tasklist.consolidate()
