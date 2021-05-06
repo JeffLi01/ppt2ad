@@ -50,7 +50,7 @@ def main():
     args = parser.parse_args()
 
     startdate = time.strptime("2021-03-15", "%Y-%m-%d")
-    stopdate = time.strptime("2021-04-30", "%Y-%m-%d")
+    stopdate = time.strptime("2022-04-30", "%Y-%m-%d")
     taskname = time.strftime("%Y%m%d%H%M%S")
     if args.name:
         taskname = args.name

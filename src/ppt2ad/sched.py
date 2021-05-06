@@ -20,8 +20,8 @@ Schedule = collections.namedtuple("Schedule", ["category", "week_days", "instanc
 
 BEFORE_CLASS_SCHEDULE = [
     Schedule("早读",   [0, 1, 2, 3, 4], 1,    "06:50:00", "08:00:00", None),
-    Schedule("课间",   [0, 1, 2, 3, 4], 2,    "08:40:00", None,       10),
-    Schedule("课间操", [0, 1, 2, 3, 4], 3,    "09:30:00", None,       30),
+    Schedule("课间操", [0, 1, 2, 3, 4], 2,    "08:40:00", None,       30),
+    Schedule("课间",   [0, 1, 2, 3, 4], 3,    "09:50:00", None,       10),
     Schedule("课间",   [0, 1, 2, 3, 4], 4,    "10:45:00", None,       10),
     Schedule("午休",   [0, 1, 2, 3,  ], 5,    "11:35:00", "13:30:00", None),
     Schedule("午休",   [            4], 5,    "11:35:00", "13:00:00", None),
@@ -35,7 +35,7 @@ ELECTIVE_CLASS_SCHEDULE = Schedule("课程",   [             ], 7,    "15:15:00"
 
 CLASS_SCHEDULES = [
     Schedule("课程",   [0, 1, 2, 3, 4], 1,    "08:00:00", None,       40),
-    Schedule("课程",   [0, 1, 2, 3, 4], 2,    "08:50:00", None,       40),
+    Schedule("课程",   [0, 1, 2, 3, 4], 2,    "09:10:00", None,       40),
     Schedule("课程",   [0, 1, 2, 3, 4], 3,    "10:00:00", None,       45),
     Schedule("课程",   [0, 1, 2, 3, 4], 4,    "10:55:00", None,       40),
     Schedule("课程",   [0, 1, 2, 3   ], 5,    "13:30:00", None,       40),
